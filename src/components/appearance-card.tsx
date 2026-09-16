@@ -35,7 +35,7 @@ export function AppearanceCard({ appearance, tone = "light" }: AppearanceCardPro
       <div className="mb-2.5 text-[11px] font-bold tracking-[0.16em] text-gold uppercase">
         {appearance.outlet?.name}
       </div>
-      <h3 className={`font-display mb-2 text-[21px] leading-[1.28] font-semibold ${titleClass}`}>
+      <h3 className={`font-display mb-2 text-[21px] leading-[1.28] font-semibold break-words ${titleClass}`}>
         {appearance.title}
       </h3>
       <p className={`text-[14.5px] leading-6 ${dateClass}`}>{appearance.blurb}</p>

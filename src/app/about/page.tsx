@@ -20,8 +20,8 @@ export default async function AboutPage() {
 
   return (
     <SiteShell>
-      <section className="border-t border-line bg-white py-26">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-18 px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]">
+      <section className="border-t border-line bg-white py-16 lg:py-26">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-18 lg:px-8">
           <div>
             {settings?.aboutPortrait?.asset ? (
               <div className="relative aspect-4/5 bg-fog">

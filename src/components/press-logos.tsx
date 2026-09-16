@@ -10,8 +10,8 @@ export function PressLogos({ publications }: PressLogosProps) {
   if (publications.length === 0) return null;
 
   return (
-    <section className="bg-paper py-21">
-      <div className="mx-auto max-w-7xl px-8">
+    <section className="bg-paper py-14 lg:py-21">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mb-11 text-center">
           <div className="mb-3.5 text-[11.5px] font-bold tracking-[0.2em] text-[#7A5F22] uppercase">
             Where Trita Has Been Published
@@ -20,7 +20,7 @@ export function PressLogos({ publications }: PressLogosProps) {
             Reporting and commentary across the foreign policy press.
           </h2>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(184px,1fr))] gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5">
           {publications.map((publication) => {
             const href = publication.slug
               ? `/writing?publication=${publication.slug}`

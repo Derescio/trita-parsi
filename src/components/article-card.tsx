@@ -45,7 +45,7 @@ export function ArticleCard({ article, tone = "light" }: ArticleCardProps) {
         ) : null}
       </div>
       <h3
-        className={`font-display mb-3.5 text-[21px] leading-[1.28] font-semibold tracking-[-0.01em] text-pretty ${titleClass}`}
+        className={`font-display mb-3.5 text-[21px] leading-[1.28] font-semibold tracking-[-0.01em] break-words text-pretty ${titleClass}`}
       >
         {article.title}
       </h3>
@@ -77,7 +77,7 @@ interface WritingTileProps {
 
 export function WritingTile({ article }: WritingTileProps) {
   return (
-    <article className="flex min-h-75 flex-col bg-white px-7.5 py-8.5 hover:bg-paper">
+    <article className="flex min-h-75 flex-col bg-white px-5 py-7 hover:bg-paper sm:px-7.5 sm:py-8.5">
       <div className="mb-5.5 flex items-center gap-3 border-b border-line pb-4.5">
         <span className="font-display text-navy text-base font-semibold">
           {article.publication?.name ?? "Publication"}

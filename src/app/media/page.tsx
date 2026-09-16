@@ -14,8 +14,8 @@ export default async function MediaPage() {
 
   return (
     <SiteShell>
-      <section className="bg-navy py-20">
-        <div className="mx-auto max-w-7xl px-8">
+      <section className="bg-navy py-14 lg:py-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="mb-4.5 text-[11.5px] font-bold tracking-[0.18em] text-gold uppercase">
             Media
           </div>
@@ -24,8 +24,8 @@ export default async function MediaPage() {
           </h1>
         </div>
       </section>
-      <section className="bg-paper px-8 py-18 pb-26">
-        <div className="mx-auto grid max-w-7xl grid-cols-[repeat(auto-fit,minmax(340px,1fr))] gap-10">
+      <section className="bg-paper px-5 py-12 pb-18 lg:px-8 lg:py-18 lg:pb-26">
+        <div className="mx-auto grid max-w-7xl grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-10">
           {appearances.length > 0 ? (
             appearances.map((appearance) => (
               <AppearanceCard key={appearance._id} appearance={appearance} />

@@ -11,7 +11,7 @@ export function BookCard({ book, featured = false }: BookCardProps) {
     <article
       className={
         featured
-          ? "grid grid-cols-1 items-start gap-14 border-b border-line py-18 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)]"
+          ? "grid grid-cols-1 items-start gap-8 border-b border-line py-12 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-14 md:py-18"
           : "flex flex-col gap-5"
       }
     >

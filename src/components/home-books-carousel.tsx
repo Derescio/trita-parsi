@@ -36,7 +36,7 @@ export function HomeBooksCarousel({ books }: HomeBooksCarouselProps) {
             return (
               <article
                 key={book._id}
-                className="grid grid-cols-1 items-start gap-6.5 rounded-[10px] border border-gold/50 bg-[rgba(26,35,55,0.86)] p-6.5 min-[720px]:grid-cols-[minmax(130px,0.75fr)_minmax(0,1.25fr)]"
+                className="grid grid-cols-1 items-start gap-6.5 rounded-[10px] border border-gold/50 bg-[rgba(26,35,55,0.86)] p-5 min-[720px]:grid-cols-[minmax(130px,0.75fr)_minmax(0,1.25fr)] min-[720px]:p-6.5"
               >
                 <div className="relative aspect-2/3 shadow-[0_18px_40px_rgba(0,0,0,0.5)]">
                   <SanityImage

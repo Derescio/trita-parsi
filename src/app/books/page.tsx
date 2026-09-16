@@ -14,8 +14,8 @@ export default async function BooksPage() {
 
   return (
     <SiteShell>
-      <section className="bg-navy py-20">
-        <div className="mx-auto max-w-7xl px-8">
+      <section className="bg-navy py-14 lg:py-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="mb-4.5 text-[11.5px] font-bold tracking-[0.18em] text-gold uppercase">
             Books
           </div>
@@ -24,7 +24,7 @@ export default async function BooksPage() {
           </h1>
         </div>
       </section>
-      <section className="bg-paper px-8 pb-26">
+      <section className="bg-paper px-5 pb-18 lg:px-8 lg:pb-26">
         <div className="mx-auto max-w-7xl">
           {books.length > 0 ? (
             books.map((book) => <BookCard key={book._id} book={book} featured />)

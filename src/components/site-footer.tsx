@@ -24,11 +24,11 @@ export function SiteFooter({ settings, books }: SiteFooterProps) {
   return (
     <footer
       id="contact"
-      className="relative overflow-hidden border-t-[3px] border-gold bg-navy px-8 pt-18 pb-9"
+      className="relative overflow-hidden border-t-[3px] border-gold bg-navy px-5 pt-14 pb-9 lg:px-8 lg:pt-18"
     >
       <div className="relative mx-auto max-w-7xl">
         <div className="flex flex-wrap gap-8 border-b border-paper/14 pb-14">
-          <div className="min-w-65 flex-1">
+          <div className="min-w-0 flex-1 sm:min-w-65">
             <div className="mb-5 flex items-center gap-3.5">
               <span className="block h-7 w-0.75 bg-burgundy" />
               <span className="font-display text-[21px] font-semibold tracking-[0.14em] text-paper">
@@ -113,7 +113,7 @@ export function SiteFooter({ settings, books }: SiteFooterProps) {
         </div>
         <div
           id="newsletter"
-          className="grid scroll-mt-24 grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-14 border-b border-paper/14 py-14"
+          className="grid scroll-mt-24 grid-cols-1 items-start gap-10 border-b border-paper/14 py-12 lg:grid-cols-2 lg:gap-14 lg:py-14"
         >
           <div>
             <div className="mb-4 text-[11px] font-bold tracking-[0.16em] text-gold uppercase">
@@ -152,7 +152,7 @@ export function SiteFooter({ settings, books }: SiteFooterProps) {
                     placeholder="you@example.com"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
-                    className="min-w-50 flex-1 border border-paper/28 bg-paper/6 px-4.5 py-4 font-sans text-base text-paper outline-none focus:border-gold"
+                    className="min-w-0 flex-1 border border-paper/28 bg-paper/6 px-4.5 py-4 font-sans text-base text-paper outline-none focus:border-gold"
                   />
                   <button
                     type="submit"

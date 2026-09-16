@@ -24,8 +24,8 @@ export default async function WritingPage({
 
   return (
     <SiteShell>
-      <section className="bg-navy py-20">
-        <div className="mx-auto max-w-7xl px-8">
+      <section className="bg-navy py-14 lg:py-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="mb-4.5 text-[11.5px] font-bold tracking-[0.18em] text-gold uppercase">
             Writing
           </div>
@@ -37,11 +37,11 @@ export default async function WritingPage({
           </p>
         </div>
       </section>
-      <section className="bg-paper px-8 pt-11 pb-26">
+      <section className="bg-paper px-5 pt-8 pb-18 lg:px-8 lg:pt-11 lg:pb-26">
         <div className="mx-auto max-w-7xl">
           <PublicationFilter publications={publications} activeSlug={slug} />
           {articles.length > 0 ? (
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(340px,1fr))] gap-px border border-line bg-line">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-px border border-line bg-line">
               {articles.map((article) => (
                 <WritingTile key={article._id} article={article} />
               ))}

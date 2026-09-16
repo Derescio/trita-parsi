@@ -27,17 +27,17 @@ export default async function HomePage() {
 
   return (
     <SiteShell overlayHeader>
-      <section className="relative overflow-hidden bg-navy pt-35">
+      <section className="relative overflow-hidden bg-navy pt-28 lg:pt-35">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,#22304c_0%,#141b2e_70%)] opacity-80" />
-        <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-navy from-36% via-navy/70 via-58% to-navy/30" />
-        <div className="pointer-events-none absolute top-20 right-[8%] bottom-0 left-[30%] min-[900px]:top-24 min-[900px]:right-[12%] min-[900px]:left-[40%] [mask-composite:intersect] [mask-image:linear-gradient(90deg,transparent,rgba(0,0,0,0.35)_8%,#000_22%,#000_86%,transparent),linear-gradient(180deg,transparent,#000_14%,#000_94%,transparent)] [-webkit-mask-composite:source-in] [-webkit-mask-image:linear-gradient(90deg,transparent,rgba(0,0,0,0.35)_8%,#000_22%,#000_86%,transparent),linear-gradient(180deg,transparent,#000_14%,#000_94%,transparent)]">
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-navy/70 via-navy/55 to-navy lg:bg-linear-to-r lg:from-navy lg:from-36% lg:via-navy/70 lg:via-58% lg:to-navy/30" />
+        <div className="pointer-events-none absolute inset-x-0 top-16 bottom-0 opacity-45 min-[900px]:top-24 min-[900px]:right-[8%] min-[900px]:left-[30%] min-[900px]:opacity-100 min-[900px]:[mask-composite:intersect] min-[900px]:[mask-image:linear-gradient(90deg,transparent,rgba(0,0,0,0.35)_8%,#000_22%,#000_86%,transparent),linear-gradient(180deg,transparent,#000_14%,#000_94%,transparent)] min-[900px]:[-webkit-mask-composite:source-in] min-[900px]:[-webkit-mask-image:linear-gradient(90deg,transparent,rgba(0,0,0,0.35)_8%,#000_22%,#000_86%,transparent),linear-gradient(180deg,transparent,#000_14%,#000_94%,transparent)]">
             {settings?.heroPortrait?.asset ? (
               <SanityImage
                 image={settings.heroPortrait}
                 alt="Trita Parsi"
                 fill
                 className="object-cover object-[center_18%]"
-                sizes="42vw"
+                sizes="(min-width: 900px) 42vw, 100vw"
                 priority
               />
             ) : (
@@ -46,14 +46,14 @@ export default async function HomePage() {
                 alt="Trita Parsi"
                 fill
                 className="object-cover object-[center_18%]"
-                sizes="42vw"
+                sizes="(min-width: 900px) 42vw, 100vw"
                 priority
               />
             )}
             <div className="absolute inset-0 bg-[linear-gradient(90deg,#141B2E_0%,rgba(20,27,46,0.5)_26%,rgba(20,27,46,0)_52%),linear-gradient(0deg,rgba(20,27,46,0.62)_0%,rgba(20,27,46,0)_34%),linear-gradient(180deg,rgba(20,27,46,0.55)_0%,rgba(20,27,46,0)_26%)]" />
         </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-8">
-          <div className="max-w-140 pb-28">
+        <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="max-w-140 pb-16 lg:pb-28">
             <div className="mb-7.5 h-0.75 w-14 bg-burgundy" />
             <h1 className="font-display mb-6.5 max-w-3xl text-[clamp(40px,4.6vw,68px)] leading-[1.06] font-semibold tracking-[-0.02em] text-balance text-paper">
               {settings?.heroHeadline ?? "Understanding the Middle East. Beyond the headlines."}
@@ -62,22 +62,22 @@ export default async function HomePage() {
               {settings?.heroDek ??
                 "Author, foreign policy scholar, and co-founder of the Quincy Institute for Responsible Statecraft. Two decades of analysis on Iran, diplomacy, and American power."}
             </p>
-            <div className="mb-11 flex flex-wrap gap-3.5">
+            <div className="mb-11 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap">
               <Link
                 href="/writing"
-                className="bg-burgundy px-7.5 py-4.25 text-[12.5px] font-bold tracking-[0.14em] text-paper uppercase hover:bg-burgundy-dark"
+                className="bg-burgundy px-7.5 py-4.25 text-center text-[12.5px] font-bold tracking-[0.14em] text-paper uppercase hover:bg-burgundy-dark"
               >
                 Read the Analysis
               </Link>
               <Link
                 href="/media"
-                className="inline-flex items-center gap-3 border border-paper/40 px-7 py-4.25 text-[12.5px] font-bold tracking-[0.14em] text-paper uppercase hover:border-gold"
+                className="inline-flex items-center justify-center gap-3 border border-paper/40 px-7 py-4.25 text-[12.5px] font-bold tracking-[0.14em] text-paper uppercase hover:border-gold"
               >
                 <span className="block h-0 w-0 border-y-6 border-y-transparent border-l-9 border-l-paper" />
                 Watch Interviews
               </Link>
             </div>
-            <div className="flex items-center gap-4.5 border-t border-gold/35 pt-6.5">
+            <div className="flex flex-wrap items-center gap-x-4.5 gap-y-2 border-t border-gold/35 pt-6.5">
               <span className="text-[11.5px] font-semibold tracking-[0.16em] text-gold uppercase">
                 Grawemeyer Award Laureate
               </span>
@@ -90,8 +90,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white py-22">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-11 px-8 lg:grid-cols-[minmax(220px,0.85fr)_minmax(0,3.2fr)]">
+      <section className="bg-white py-14 lg:py-22">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-11 px-5 lg:grid-cols-[minmax(220px,0.85fr)_minmax(0,3.2fr)] lg:px-8">
           <div>
             <div className="mb-5.5 flex items-center gap-3.5">
               <span className="block h-0.5 w-8.5 bg-burgundy" />
@@ -111,7 +111,7 @@ export default async function HomePage() {
             </Link>
           </div>
           {articles.length > 0 ? (
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] gap-8">
               {articles.map((article) => (
                 <ArticleCard key={article._id} article={article} />
               ))}
@@ -122,7 +122,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-navy px-8 py-23">
+      <section className="bg-navy px-5 py-16 lg:px-8 lg:py-23">
         <div className="mx-auto max-w-7xl">
           <div className="mb-11.5">
             <div className="mb-3.5 text-[11.5px] font-bold tracking-[0.2em] text-gold uppercase">
@@ -142,7 +142,7 @@ export default async function HomePage() {
 
       <PressLogos publications={publications} />
 
-      <section className="bg-navy px-8 py-24">
+      <section className="bg-navy px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-14 flex flex-wrap items-end justify-between gap-8">
             <div>
@@ -161,7 +161,7 @@ export default async function HomePage() {
             </Link>
           </div>
           {appearances.length > 0 ? (
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-8">
               {appearances.map((appearance) => (
                 <AppearanceCard key={appearance._id} appearance={appearance} tone="dark" />
               ))}
