@@ -77,6 +77,9 @@ export function SiteFooter({ settings, books }: SiteFooterProps) {
                 <Link href="/about" className="text-[14.5px] text-mist hover:text-paper">
                   About
                 </Link>
+                <Link href="/contact" className="text-[14.5px] text-mist hover:text-paper">
+                  Contact
+                </Link>
                 <Link href="#newsletter" className="text-[14.5px] text-mist hover:text-paper">
                   Newsletter
                 </Link>
@@ -172,7 +175,17 @@ export function SiteFooter({ settings, books }: SiteFooterProps) {
           <span className="text-[13px] text-muted">
             © 2026 Trita Parsi. All rights reserved.
           </span>
-          <span className="text-[13px] text-muted">Concept mockup — not the live site.</span>
+          <span className="text-[13px] text-muted">
+            Concept mockup — not the live site.{" "}
+            <a
+              href="https://www.opsedsolutions.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-mist hover:text-paper"
+            >
+              Powered By Opsed Solutions
+            </a>
+          </span>
         </div>
       </div>
     </footer>

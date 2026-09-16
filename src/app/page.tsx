@@ -67,7 +67,7 @@ export default async function HomePage() {
                 href="/writing"
                 className="bg-burgundy px-7.5 py-4.25 text-center text-[12.5px] font-bold tracking-[0.14em] text-paper uppercase hover:bg-burgundy-dark"
               >
-                Read the Analysis
+                Analysis
               </Link>
               <Link
                 href="/media"

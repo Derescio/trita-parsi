@@ -47,6 +47,11 @@ export type Appearance = {
   outlet: Publication | null;
 };
 
+export type AboutSection = {
+  heading?: string;
+  paragraphs: string[];
+};
+
 export type SiteSettings = {
   heroHeadline?: string;
   heroDek?: string;
@@ -60,3 +65,12 @@ export type SiteSettings = {
   youtubeUrl?: string;
   quincyUrl?: string;
 } | null;
+
+export type WritingIndexProps = {
+  articles: Article[];
+  publications: Publication[];
+  settings: SiteSettings;
+  activeSlug: string;
+};
+
+export type ContactTopic = "press" | "speaking" | "other";

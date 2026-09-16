@@ -9,7 +9,7 @@ const nav = [
   { href: "/books", label: "Books" },
   { href: "/media", label: "Media" },
   { href: "/writing", label: "Writing" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 interface SiteHeaderProps {
