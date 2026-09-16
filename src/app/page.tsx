@@ -1,69 +1,176 @@
+import { SiteShell } from "@/components/site-shell";
+import { ArticleCard } from "@/components/article-card";
+import { AppearanceCard } from "@/components/appearance-card";
+import { HomeBooksCarousel } from "@/components/home-books-carousel";
+import { SanityImage } from "@/components/sanity-image";
+import { sanityFetch } from "@/sanity/lib/client";
+import { PressLogos } from "@/components/press-logos";
+import {
+  BOOKS_QUERY,
+  FEATURED_APPEARANCES_QUERY,
+  FEATURED_ARTICLES_QUERY,
+  PUBLICATIONS_QUERY,
+  SITE_SETTINGS_QUERY,
+} from "@/sanity/lib/queries";
+import type { Appearance, Article, Book, Publication, SiteSettings } from "@/.utils/types";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default async function HomePage() {
+  const [settings, articles, books, publications, appearances] = await Promise.all([
+    sanityFetch<SiteSettings>(SITE_SETTINGS_QUERY),
+    sanityFetch<Article[]>(FEATURED_ARTICLES_QUERY),
+    sanityFetch<Book[]>(BOOKS_QUERY),
+    sanityFetch<Publication[]>(PUBLICATIONS_QUERY),
+    sanityFetch<Appearance[]>(FEATURED_APPEARANCES_QUERY),
+  ]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <SiteShell overlayHeader>
+      <section className="relative overflow-hidden bg-navy pt-35">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,#22304c_0%,#141b2e_70%)] opacity-80" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-navy from-36% via-navy/70 via-58% to-navy/30" />
+        <div className="pointer-events-none absolute top-20 right-[8%] bottom-0 left-[30%] min-[900px]:top-24 min-[900px]:right-[12%] min-[900px]:left-[40%] [mask-composite:intersect] [mask-image:linear-gradient(90deg,transparent,rgba(0,0,0,0.35)_8%,#000_22%,#000_86%,transparent),linear-gradient(180deg,transparent,#000_14%,#000_94%,transparent)] [-webkit-mask-composite:source-in] [-webkit-mask-image:linear-gradient(90deg,transparent,rgba(0,0,0,0.35)_8%,#000_22%,#000_86%,transparent),linear-gradient(180deg,transparent,#000_14%,#000_94%,transparent)]">
+            {settings?.heroPortrait?.asset ? (
+              <SanityImage
+                image={settings.heroPortrait}
+                alt="Trita Parsi"
+                fill
+                className="object-cover object-[center_18%]"
+                sizes="42vw"
+                priority
+              />
+            ) : (
+              <Image
+                src="/trita-parsi-hero.png"
+                alt="Trita Parsi"
+                fill
+                className="object-cover object-[center_18%]"
+                sizes="42vw"
+                priority
+              />
+            )}
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#141B2E_0%,rgba(20,27,46,0.5)_26%,rgba(20,27,46,0)_52%),linear-gradient(0deg,rgba(20,27,46,0.62)_0%,rgba(20,27,46,0)_34%),linear-gradient(180deg,rgba(20,27,46,0.55)_0%,rgba(20,27,46,0)_26%)]" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="relative z-10 mx-auto max-w-7xl px-8">
+          <div className="max-w-140 pb-28">
+            <div className="mb-7.5 h-0.75 w-14 bg-burgundy" />
+            <h1 className="font-display mb-6.5 max-w-3xl text-[clamp(40px,4.6vw,68px)] leading-[1.06] font-semibold tracking-[-0.02em] text-balance text-paper">
+              {settings?.heroHeadline ?? "Understanding the Middle East. Beyond the headlines."}
+            </h1>
+            <p className="mb-9.5 max-w-130 text-lg leading-[1.65] font-light text-mist">
+              {settings?.heroDek ??
+                "Author, foreign policy scholar, and co-founder of the Quincy Institute for Responsible Statecraft. Two decades of analysis on Iran, diplomacy, and American power."}
+            </p>
+            <div className="mb-11 flex flex-wrap gap-3.5">
+              <Link
+                href="/writing"
+                className="bg-burgundy px-7.5 py-4.25 text-[12.5px] font-bold tracking-[0.14em] text-paper uppercase hover:bg-burgundy-dark"
+              >
+                Read the Analysis
+              </Link>
+              <Link
+                href="/media"
+                className="inline-flex items-center gap-3 border border-paper/40 px-7 py-4.25 text-[12.5px] font-bold tracking-[0.14em] text-paper uppercase hover:border-gold"
+              >
+                <span className="block h-0 w-0 border-y-6 border-y-transparent border-l-9 border-l-paper" />
+                Watch Interviews
+              </Link>
+            </div>
+            <div className="flex items-center gap-4.5 border-t border-gold/35 pt-6.5">
+              <span className="text-[11.5px] font-semibold tracking-[0.16em] text-gold uppercase">
+                Grawemeyer Award Laureate
+              </span>
+              <span className="h-1 w-1 rounded-full bg-muted" />
+              <span className="text-[11.5px] font-semibold tracking-[0.16em] text-slate uppercase">
+                Georgetown University
+              </span>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="bg-white py-22">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-11 px-8 lg:grid-cols-[minmax(220px,0.85fr)_minmax(0,3.2fr)]">
+          <div>
+            <div className="mb-5.5 flex items-center gap-3.5">
+              <span className="block h-0.5 w-8.5 bg-burgundy" />
+              <span className="text-[11.5px] font-bold tracking-[0.2em] text-ink uppercase">
+                Featured Analysis
+              </span>
+            </div>
+            <h2 className="font-display text-navy mb-5.5 text-[clamp(28px,2.7vw,36px)] leading-[1.18] font-semibold tracking-[-0.02em]">
+              In-depth perspectives on a complex region.
+            </h2>
+            <p className="mb-6.5 text-[15px] leading-[1.72] text-muted">
+              Explore Trita Parsi’s latest writing, commentary and analysis on U.S. foreign
+              policy, Iran and the Middle East.
+            </p>
+            <Link href="/writing" className="text-[11.5px] font-bold tracking-[0.16em] text-burgundy uppercase">
+              All Writing →
+            </Link>
+          </div>
+          {articles.length > 0 ? (
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8">
+              {articles.map((article) => (
+                <ArticleCard key={article._id} article={article} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-muted">Add op-eds in Studio to populate this section.</p>
+          )}
+        </div>
+      </section>
+
+      <section className="bg-navy px-8 py-23">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-11.5">
+            <div className="mb-3.5 text-[11.5px] font-bold tracking-[0.2em] text-gold uppercase">
+              Featured Books
+            </div>
+            <h2 className="font-display mb-4.5 text-[clamp(34px,4vw,54px)] leading-[1.04] font-bold tracking-[-0.025em] text-cream">
+              Trita’s Books
+            </h2>
+            <p className="max-w-140 text-[17px] leading-[1.62] font-light text-mist">
+              Three books on Iran, Israel, and American diplomacy — reporting from inside the
+              negotiations that shaped the region.
+            </p>
+          </div>
+          <HomeBooksCarousel books={books} />
+        </div>
+      </section>
+
+      <PressLogos publications={publications} />
+
+      <section className="bg-navy px-8 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-8">
+            <div>
+              <div className="mb-4.5 text-[11.5px] font-bold tracking-[0.18em] text-gold uppercase">
+                Media
+              </div>
+              <h2 className="font-display max-w-150 text-[clamp(32px,3.4vw,46px)] leading-[1.1] font-semibold tracking-[-0.02em] text-paper">
+                Interviews, panels, and testimony.
+              </h2>
+            </div>
+            <Link
+              href="/media"
+              className="border-b border-gold/60 pb-1.5 text-xs font-bold tracking-[0.14em] text-gold uppercase hover:text-paper"
+            >
+              View All Interviews →
+            </Link>
+          </div>
+          {appearances.length > 0 ? (
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8">
+              {appearances.map((appearance) => (
+                <AppearanceCard key={appearance._id} appearance={appearance} tone="dark" />
+              ))}
+            </div>
+          ) : (
+            <p className="text-mist">Add media appearances in Studio to populate this section.</p>
+          )}
+        </div>
+      </section>
+    </SiteShell>
   );
 }
