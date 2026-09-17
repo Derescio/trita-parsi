@@ -54,7 +54,6 @@ export default async function HomePage() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-140 pb-16 lg:pb-28">
-            <div className="mb-7.5 h-0.75 w-14 bg-burgundy" />
             <h1 className="font-display mb-6.5 max-w-3xl text-[clamp(40px,4.6vw,68px)] leading-[1.06] font-semibold tracking-[-0.02em] text-balance text-paper">
               {settings?.heroHeadline ?? "Understanding the Middle East. Beyond the headlines."}
             </h1>
